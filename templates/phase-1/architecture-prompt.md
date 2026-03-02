@@ -6,10 +6,10 @@ A structured guide for defining app architecture before building.
 
 ## How to Use
 
-1. Copy this template for your project
+1. Copy this template to your project as `docs/architecture.md`
 2. Select your primary stack (defaults will populate)
 3. Answer guiding questions in each section
-4. Document decisions in the Decision Log (#4)
+4. Log decisions as you make them (Section 7)
 
 ---
 
@@ -125,7 +125,7 @@ Choose one. Defaults will apply based on selection.
 
 ## 5. Core Entities (Data Model Preview)
 
-*High-level only — detailed model in #7*
+*High-level only — detailed model in Phase 1 Data Model Template*
 
 | Entity | Key Attributes | Relationships |
 |--------|----------------|---------------|
@@ -158,17 +158,33 @@ Choose one. Defaults will apply based on selection.
 
 ---
 
-## 7. Key Decisions Summary
+## 7. Decision Log
 
-*To be logged in detail in Decision Log (#4)*
+*Record architectural decisions here. When you revisit this project in 3+ months, you'll know why you made each choice.*
 
-| Decision | Choice | Why |
-|----------|--------|-----|
-| Stack | | |
-| Architecture | | |
-| Database | | |
-| Auth approach | | |
-| Hosting | | |
+### How to Log Decisions
+- Add a row when you make a non-obvious choice
+- "Why" = what problem this solved, or what you avoided
+- Update if a decision changes
+
+### Decisions
+
+| Date | Decision | Choice | Options Considered | Why |
+|------|----------|--------|-------------------|-----|
+| | Stack | | | |
+| | Architecture | | | |
+| | Database | | | |
+| | Auth | | | |
+| | Hosting | | | |
+| | | | | |
+
+### Example Entries
+
+| Date | Decision | Choice | Options Considered | Why |
+|------|----------|--------|-------------------|-----|
+| 2024-01-15 | Background jobs | Solid Queue | Sidekiq, Solid Queue, GoodJob | Rails 8 default, no Redis needed, simpler ops for solo dev |
+| 2024-01-15 | Auth | Custom | Devise, Rodauth, Custom | Simple app with only email/password, Devise overkill |
+| 2024-01-20 | File uploads | Active Storage + S3 | Active Storage + Disk, Shrine | Need CDN + permanent storage, AS is built-in |
 
 ---
 
